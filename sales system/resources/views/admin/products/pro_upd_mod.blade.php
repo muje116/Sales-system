@@ -1,0 +1,70 @@
+
+<div id="update-modal{{ $product->id }}" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"></button>
+                <h4>Edit Product</h4>
+                <div class="modal-body">
+                <form action="{{ route('products.update', ['id'=>$product->id]) }}" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <label for="product_code">Product Code</label>
+                                <input type="text" class="form-control" name="product_code" value="{{ $product->prod_code }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="product_name">Product Name</label>
+                                <input type="text" class="form-control" name="product_name" value="{{ $product->prod_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="reorder">Reorder Point</label>
+                                <input name="reorder" class="form-control" id="reorder" value="{{ $product->reorder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input name="price" type="number"class="form-control" id="price" value="{{ $product->price }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" class="form-control" name="quantity" value="{{ $product->qty }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="tax">Tax</label>
+                                <input type="text" name="tax" class="form-control" id="" value="{{ $product->tax }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" name="category_id" id="category">
+                                    @foreach ($categories as $category)
+
+                                        <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="supplier">Supplier</label>
+                                <select class="form-control" name="supplier_id" id="supplier">
+                                    @foreach ($suppliers as $supplier)
+
+                                        <option value="{{ $supplier->id }}">{{ $supplier->supplier_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                                <div class="form-group modal-footer">
+                                <button type="submit" class="btn btn-default" data-dismiss='modal'>Close</button>
+                                <button type="submit" class="btn btn-success">update</button>
+                                </div>
+                            </div>
+                </form>
+
+
+                    <div class="">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
